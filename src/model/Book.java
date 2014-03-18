@@ -65,4 +65,10 @@ public class Book {
 		this.description = description;
 	}
 	
+	@Override
+    public String toString()
+    {
+        return this.title+" - "+this.author;
+    }
+	
 }

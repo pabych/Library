@@ -2,6 +2,7 @@ package main;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import Service.Search;
 import model.Book;
@@ -18,13 +19,18 @@ public class Main {
 		createFakeUser(db);
 		createFakeBook(db);
 		
-		ArrayList<Book> resultBook = Search.searchByTitle("наказание", db);
-		
+		ArrayList<Book> resultTitle = Search.searchByTitle("наказание", db);
 		ArrayList<Book> resultAuthor = Search.searchByAuthor("Браун", db);
-		
 		ArrayList<Book> resultRate = Search.searchByRate(8, db);
 		
+		System.out.println("результаты поиска по названию: " + resultTitle.toString());
+		System.out.println("результаты поиска по автору: " + resultAuthor.toString());
+		System.out.println("результаты поиска по рейтингу: " + resultRate.toString());
 	}
+	
+	
+	
+	
 	
 	public static void createFakeUser(FakeDataBase users){
 		System.out.println("Create fake user");
