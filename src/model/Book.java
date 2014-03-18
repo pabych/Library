@@ -9,7 +9,7 @@ public class Book {
 	private String filename;
 	private double rate;
 	/*List <- genre*/
-//	private List<String> genre;
+	private ArrayList<String> genre;
 	private String description;
 	
 	public Book(String title, String author) {

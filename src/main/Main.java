@@ -18,7 +18,9 @@ public class Main {
 		createFakeUser(db);
 		createFakeBook(db);
 		
-		ArrayList<Book> resultBook = Search.SearchByTitle("Приключение и наказание", db);
+		ArrayList<Book> resultBook = Search.searchByTitle("наказание", db);
+		
+		ArrayList<Book> resultAuthor = Search.searchByAuthor("Браун", db);
 		
 	}
 	
@@ -50,7 +52,7 @@ public class Main {
 		books.addBook(book3);
 		
 		Book book4 = new Book("Портрен Дориана Грей", "Оскар Уаилд");
-		books.addBook(book2);
+		books.addBook(book4);
 	}
 	
 

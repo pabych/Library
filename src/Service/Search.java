@@ -6,11 +6,11 @@ import model.Book;
 import model.FakeDataBase;
 
 public class Search {
-	public static ArrayList<Book> SearchByTitle(String searchTitle, FakeDataBase fakeDataBase){
+	public static ArrayList<Book> searchByTitle(String searchTitle, FakeDataBase fakeDataBase){
 		
 		ArrayList<Book> result = new ArrayList<Book>();
 		for (Book book : fakeDataBase.getBooks()) {
-			if(book.getTitle() .equals(searchTitle)) {
+			if(book.getTitle().contains(searchTitle)) {
 				result.add(book);
 			}
 		}
@@ -18,4 +18,18 @@ public class Search {
 		
 		return result;		
 	}
+	
+public static ArrayList<Book> searchByAuthor(String searchAuthor, FakeDataBase fakeDataBase){
+		
+		ArrayList<Book> result = new ArrayList<Book>();
+		for (Book book : fakeDataBase.getBooks()) {
+			if(book.getAuthor().contains(searchAuthor)) {
+				result.add(book);
+			}
+		}
+			
+		
+		return result;		
+	}
+	
 }
