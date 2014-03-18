@@ -22,6 +22,8 @@ public class Main {
 		
 		ArrayList<Book> resultAuthor = Search.searchByAuthor("Браун", db);
 		
+		ArrayList<Book> resultRate = Search.searchByRate(8, db);
+		
 	}
 	
 	public static void createFakeUser(FakeDataBase users){
@@ -42,16 +44,16 @@ public class Main {
 	
 	public static void createFakeBook(FakeDataBase books){
 		System.out.println("Create fake book");
-		Book book1 = new Book("Приключение и наказание", "Достоевский");
+		Book book1 = new Book("Приключение и наказание", "Достоевский", 8.9);
 		books.addBook(book1);
 		
-		Book book2 = new Book("Ангелы и демоны", "Дэн Браун");
+		Book book2 = new Book("Ангелы и демоны", "Дэн Браун", 7.6);
 		books.addBook(book2);
 		
-		Book book3 = new Book("Код да Винчи", "Дэн Браун");
+		Book book3 = new Book("Код да Винчи", "Дэн Браун", 8.7);
 		books.addBook(book3);
 		
-		Book book4 = new Book("Портрен Дориана Грей", "Оскар Уаилд");
+		Book book4 = new Book("Портрен Дориана Грей", "Оскар Уаилд", 7.3);
 		books.addBook(book4);
 	}
 	

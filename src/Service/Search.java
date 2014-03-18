@@ -19,7 +19,7 @@ public class Search {
 		return result;		
 	}
 	
-public static ArrayList<Book> searchByAuthor(String searchAuthor, FakeDataBase fakeDataBase){
+	public static ArrayList<Book> searchByAuthor(String searchAuthor, FakeDataBase fakeDataBase){
 		
 		ArrayList<Book> result = new ArrayList<Book>();
 		for (Book book : fakeDataBase.getBooks()) {
@@ -31,5 +31,17 @@ public static ArrayList<Book> searchByAuthor(String searchAuthor, FakeDataBase f
 		
 		return result;		
 	}
-	
+
+	public static ArrayList<Book> searchByRate(double searchRate, FakeDataBase fakeDataBase) {
+		
+		ArrayList<Book> result = new ArrayList<Book>();
+		for (Book book : fakeDataBase.getBooks()) {
+			if(book.getRate() >= searchRate) {
+				result.add(book);
+			}
+		}
+			
+		
+		return result;
+	}
 }

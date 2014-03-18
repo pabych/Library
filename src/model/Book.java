@@ -8,13 +8,13 @@ public class Book {
 	private int year;
 	private String filename;
 	private double rate;
-	/*List <- genre*/
 	private ArrayList<String> genre;
 	private String description;
 	
-	public Book(String title, String author) {
+	public Book(String title, String author, double rate) {
 		this.title = title;		
 		this.author = author;
+		this.rate = rate;
 	}
 
 	public String getTitle() {
