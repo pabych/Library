@@ -1,5 +1,5 @@
 package model;
 
 public class Bookmark {
-	/*Book book*/
+	private Book book;
 }

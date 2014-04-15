@@ -2,6 +2,7 @@ package Service;
 
 import java.util.ArrayList;
 
+import model.Comment;
 import model.Book;
 import model.FakeDataBase;
 
@@ -33,10 +34,14 @@ public class Search {
 	}
 
 	public static ArrayList<Book> searchByRate(double searchRate, FakeDataBase fakeDataBase) {
-		
 		ArrayList<Book> result = new ArrayList<Book>();
 		for (Book book : fakeDataBase.getBooks()) {
-			if(book.getRate() >= searchRate) {
+			double avarage = 0;
+			for (Comment comment: book.getRating() ){
+				avarage +=comment.getRate();
+			}
+			avarage = avarage/book.getRating().size(); 
+			if(avarage >= searchRate){
 				result.add(book);
 			}
 		}
