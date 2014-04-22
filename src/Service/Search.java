@@ -4,13 +4,12 @@ import java.util.ArrayList;
 
 import model.Comment;
 import model.Book;
-import model.FakeDataBase;
 
 public class Search {
-	public static ArrayList<Book> searchByTitle(String searchTitle, FakeDataBase fakeDataBase){
+	public static ArrayList<Book> searchByTitle(String searchTitle, LibraryService ls){
 		
 		ArrayList<Book> result = new ArrayList<Book>();
-		for (Book book : fakeDataBase.getBooks()) {
+		for (Book book : ls.getFdb().getBooks()) {
 			if(book.getTitle().contains(searchTitle)) {
 				result.add(book);
 			}
@@ -20,10 +19,10 @@ public class Search {
 		return result;		
 	}
 	
-	public static ArrayList<Book> searchByAuthor(String searchAuthor, FakeDataBase fakeDataBase){
+	public static ArrayList<Book> searchByAuthor(String searchAuthor, LibraryService ls){
 		
 		ArrayList<Book> result = new ArrayList<Book>();
-		for (Book book : fakeDataBase.getBooks()) {
+		for (Book book : ls.getFdb().getBooks()) {
 			if(book.getAuthor().contains(searchAuthor)) {
 				result.add(book);
 			}
@@ -33,9 +32,9 @@ public class Search {
 		return result;		
 	}
 
-	public static ArrayList<Book> searchByRate(double searchRate, FakeDataBase fakeDataBase) {
+	public static ArrayList<Book> searchByRate(double searchRate, LibraryService ls) {
 		ArrayList<Book> result = new ArrayList<Book>();
-		for (Book book : fakeDataBase.getBooks()) {
+		for (Book book : ls.getFdb().getBooks()) {
 			double avarage = 0;
 			for (Comment comment: book.getRating() ){
 				avarage +=comment.getRate();
@@ -45,8 +44,7 @@ public class Search {
 				result.add(book);
 			}
 		}
-			
-		
+
 		return result;
 	}
 }

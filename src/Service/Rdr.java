@@ -10,12 +10,12 @@ public class Rdr {
 	}
 	
 	public static double readDbl(){
-	    double a = in.nextDouble();
-	    return a;
+	    double b = in.nextDouble();
+	    return b;
 	}
 	
-	public static double readInt(){
-	    int a = in.nextInt();
-	    return a;
+	public static int readInt(){
+	    int c = in.nextInt();
+	    return c;
 	}
 }

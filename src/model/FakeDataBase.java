@@ -16,12 +16,28 @@ public class FakeDataBase {
 			
 		 User user4 = new User("Темур", "Абдулаев", "temur1337");
 		 addUser(user4);
+		 
+		 
+		 
+		 Book book1 = new Book("Приступление и наказание", "Достоевский");
+		 addBook(book1);
+		 
+		 Book book2 = new Book("Ангелы и демоны", "Дэн Браун");
+		 addBook(book2);
+		 
+		 Book book3 = new Book("asdasdasd", "Достоевский");
+		 addBook(book3);
+		 
+		 
 	 }
 	
 	
 	
-	private ArrayList<User> users = new ArrayList<User>();;
+	private ArrayList<User> users = new ArrayList<User>();
 	private ArrayList<Book> books = new ArrayList<Book>();
+	private ArrayList<Comment> comments = new ArrayList<Comment>();
+	private ArrayList<Bookmark> bookmarks = new ArrayList<Bookmark>();
+//	private ArrayList<Order> Orders= new ArrayList<Order>();
 	
 	public ArrayList<User> getUsers() {
 		return users;
@@ -46,6 +62,22 @@ public class FakeDataBase {
 	public void addUser(User user){
 		this.users.add(user);
 	}
+
+	public ArrayList<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(ArrayList<Comment> comments) {
+		this.comments = comments;
+	}
 	
+	public void addComment(Comment comment){
+		this.comments.add(comment);
+	}
+	
+	
+	public void addBookmark(Bookmark bookmark){
+		this.bookmarks.add(bookmark);
+	}
 	
 }

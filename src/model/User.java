@@ -7,8 +7,8 @@ public class User {
 	private String lastname;
 	private String nickname;
 	private String mail;
-	private ArrayList <Order> orders;
-	private ArrayList <Bookmark> bookmark;
+	private ArrayList <Order> orders = new ArrayList<>();
+	private ArrayList <Bookmark> bookmark = new ArrayList<>();
 	
 	
 	public String getName() {

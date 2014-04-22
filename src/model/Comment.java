@@ -5,6 +5,11 @@ public class Comment {
 	private String comment;
 	private User user;
 	
+	public Comment(double rate, String comment, User user) {
+		this.rate = rate;
+		this.comment = comment;
+		this.user = user;
+	}
 	
 	public double getRate() {
 		return rate;
