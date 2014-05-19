@@ -9,7 +9,7 @@ public class Search {
 	public static ArrayList<Book> searchByTitle(String searchTitle, LibraryService ls){
 		
 		ArrayList<Book> result = new ArrayList<Book>();
-		for (Book book : ls.getFdb().getBooks()) {
+		for (Book book : ls.getXdb().getBooks()) {
 			if(book.getTitle().contains(searchTitle)) {
 				result.add(book);
 			}
@@ -22,7 +22,7 @@ public class Search {
 	public static ArrayList<Book> searchByAuthor(String searchAuthor, LibraryService ls){
 		
 		ArrayList<Book> result = new ArrayList<Book>();
-		for (Book book : ls.getFdb().getBooks()) {
+		for (Book book : ls.getXdb().getBooks()) {
 			if(book.getAuthor().contains(searchAuthor)) {
 				result.add(book);
 			}
@@ -34,7 +34,50 @@ public class Search {
 
 	public static ArrayList<Book> searchByRate(double searchRate, LibraryService ls) {
 		ArrayList<Book> result = new ArrayList<Book>();
-		for (Book book : ls.getFdb().getBooks()) {
+		for (Book book : ls.getXdb().getBooks()) {
+			double avarage = 0;
+			for (Comment comment: book.getRating() ){
+				avarage +=comment.getRate();
+			}
+			avarage = avarage/book.getRating().size(); 
+			if(avarage >= searchRate){
+				result.add(book);
+			}
+		}
+
+		return result;
+	}
+	
+	
+	public static ArrayList<Book> xmlSearchByTitle(String searchTitle, LibraryService ls){
+		
+		ArrayList<Book> result = new ArrayList<Book>();
+		for (Book book : ls.getXdb().getBooks()) {
+			if(book.getTitle().contains(searchTitle)) {
+				result.add(book);
+			}
+		}
+			
+		
+		return result;		
+	}
+	
+	public static ArrayList<Book> xmlSearchByAuthor(String searchAuthor, LibraryService ls){
+		
+		ArrayList<Book> result = new ArrayList<Book>();
+		for (Book book : ls.getXdb().getBooks()) {
+			if(book.getAuthor().contains(searchAuthor)) {
+				result.add(book);
+			}
+		}
+			
+		
+		return result;		
+	}
+
+	public static ArrayList<Book> xmlSearchByRate(double searchRate, LibraryService ls) {
+		ArrayList<Book> result = new ArrayList<Book>();
+		for (Book book : ls.getXdb().getBooks()) {
 			double avarage = 0;
 			for (Comment comment: book.getRating() ){
 				avarage +=comment.getRate();

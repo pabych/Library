@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+  <user id="1" name="Andrey" lastname="Lisovskiy" nickname="Lis" email="lisovskiy@mail.ru">
+    <orders>
+      <order>1</order>
+    </orders>
+    <bookmarks>
+      <bookmark>2</bookmark>
+    </bookmarks>
+  </user>
+  <user id="2" name="Oleg" lastname="Shmyger" nickname="Olega" email="shmyger@mail.ru">
+    <orders>
+      <order>1</order>
+    </orders>
+    <bookmarks>
+      <bookmark>2</bookmark>
+    </bookmarks>
+  </user>
+</users>

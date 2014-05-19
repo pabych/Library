@@ -1,6 +1,5 @@
 package Service;
 
-
 import model.Book;
 import model.Bookmark;
 import model.Comment;
@@ -9,11 +8,10 @@ import model.User;
 import model.FakeDataBase;
 import model.XmlDataBase;
 
-
-public class FakeLibraryService implements LibraryService {
-	private FakeDataBase fdb;
-	public FakeLibraryService(){
-		fdb = new FakeDataBase();
+public class XmlLibraryService implements LibraryService {
+	private XmlDataBase xdb;
+	public XmlLibraryService(){
+		xdb = new XmlDataBase();
 	}
 	@Override
 	public void addComment(User user, Book book, String comment, double rate) {
@@ -27,17 +25,17 @@ public class FakeLibraryService implements LibraryService {
 	@Override
 	public void addUser(User user) {
 		// TODO Auto-generated method stub
-		fdb.addUser(user);
+		xdb.addUser(user);
 	}
 	@Override
 	public void addBook(Book book) {
 		// TODO Auto-generated method stub
-		fdb.addBook(book);
+		xdb.addBook(book);
 	}
 	@Override
 	public User findUser(String nickname) {
 		// TODO Auto-generated method stub
-		for(User user: fdb.getUsers()){
+		for(User user: xdb.getUsers()){
 			if(user.getNickname().equals(nickname)){
 				return user;
 			}
@@ -47,23 +45,22 @@ public class FakeLibraryService implements LibraryService {
 	@Override
 	public Book findBook(String title) {
 		// TODO Auto-generated method stub
-		for(Book book: fdb.getBooks()){
+		for(Book book: xdb.getBooks()){
 			if(book.getTitle().equals(title)){
 				return book;
 			}
 		}
 		return null;
 	}
-	public FakeDataBase getFdb() {
-		return fdb;
+	public XmlDataBase getXdb() {
+		return xdb;
 	}
-	public void setFdb(FakeDataBase fdb) {
-		this.fdb = fdb;
+	public void setXdb(XmlDataBase xdb) {
+		this.xdb = xdb;
 	}
 	@Override
 	public void addToOrders(User user, Book book) {
 		// TODO Auto-generated method stub
-		
 		Order thisOrder = new Order(book);
 		user.getOrders().add(thisOrder); 
 		
@@ -84,7 +81,7 @@ public class FakeLibraryService implements LibraryService {
 	public User findUserById(int id) {
 		// TODO Auto-generated method stub
 		
-		for(User user: fdb.getUsers()){
+		for(User user: xdb.getUsers()){
 			if(user.getId() == id){
 				return user;
 			}
@@ -94,7 +91,7 @@ public class FakeLibraryService implements LibraryService {
 	@Override
 	public Book findBookById(int id) {
 		// TODO Auto-generated method stub
-		for(Book book: fdb.getBooks()){
+		for(Book book: xdb.getBooks()){
 			if(book.getId() == id){
 				return book;
 			}
@@ -102,11 +99,10 @@ public class FakeLibraryService implements LibraryService {
 		return null;
 	}
 	@Override
-	public XmlDataBase getXdb() {
+	public FakeDataBase getFdb() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
-		
-	
+
 }

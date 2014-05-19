@@ -8,8 +8,12 @@ public class Order {
 	private Book book;
 	private String state;
 	
-	public Order(Calendar date, Calendar dateTo, Book book){
+	public Order(Book book){
 		this.book = book;
+		Calendar date = Calendar.getInstance();
+		Calendar dateTo = Calendar.getInstance();
+		dateTo.add(Calendar.DAY_OF_YEAR, 14); 
+		
 		this.startDate = date;
 		this.endDate = dateTo;
 	}
@@ -50,7 +54,7 @@ public class Order {
 	@Override
     public String toString()
     {
-        return this.book+" - "+this.startDate + " - " + this.endDate;
+        return this.book+" - "+this.startDate.getTime() + " - " + this.endDate.getTime();
     }
 	
 }

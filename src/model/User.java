@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class User {
+	private int id;
 	private String name;
 	private String lastname;
 	private String nickname;
@@ -11,6 +12,18 @@ public class User {
 	private ArrayList <Bookmark> bookmark = new ArrayList<>();
 	
 	
+	
+	
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
 	public String getName() {
 		return name;
 	}

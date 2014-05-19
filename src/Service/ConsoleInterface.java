@@ -4,39 +4,44 @@ import java.util.ArrayList;
 
 
 import model.Book;
-import model.Comment;
 import model.User;
 
 
 
 public class ConsoleInterface {
 	
-	public static User user;
-	public static User guest(LibraryService ls){
+	private User user;
+	public void consoleStart(LibraryService ls){
+
 		
-//		boolean login;
 		for( ; ; ){
-			ConsoleStars.consoleText("Library", 50);
-			ConsoleStars.consoleText("Welcome Guest", 50);
-			
-			System.out.print("Enter your nickname please: ");
-			String nickname = Rdr.readStr();
-			System.out.println(nickname);
-			
-			user = ls.findUser(nickname);
 			
 			if(user != null){
-				System.out.println("Login success");
 				loginSuccess(ls);
 			}
 			else {
-				System.out.println("Login fail");
-				loginFail(ls);
+				ConsoleStars.consoleText("Library", 50);
+				ConsoleStars.consoleText("Welcome Guest", 50);
+				
+				System.out.print("Enter your nickname please: ");
+				String nickname = Rdr.readStr();
+				System.out.println(nickname);
+					
+				user = ls.findUser(nickname);
+				
+				if(user != null){
+					System.out.println("Login success");
+					loginSuccess(ls);
+				}
+				else {
+					System.out.println("Login fail");
+					loginFail(ls);
+				}
 			}		
 		}
 	}
 	
-	public static void loginFail(LibraryService ls){
+	public void loginFail(LibraryService ls){
 		
 		ConsoleStars.consoleText("User does not exist", 50);
 		
@@ -61,7 +66,7 @@ public class ConsoleInterface {
 		
 	}
 	
-	public static void loginSuccess(LibraryService ls){
+	public void loginSuccess(LibraryService ls){
 		ConsoleStars.consoleText("Library", 50);
 		ConsoleStars.consoleText("*", 50);
 		ConsoleStars.consoleText("Welcome, " + user.getName(), 50);
@@ -92,7 +97,7 @@ public class ConsoleInterface {
 		
 	}
 	
-	public static void registration(LibraryService ls){
+	public void registration(LibraryService ls){
 		
 		System.out.println("Enter your name: ");
 		String name = Rdr.readStr();
@@ -105,7 +110,7 @@ public class ConsoleInterface {
 	    
 	}
 	
-public static void findBook(LibraryService ls){
+public void findBook(LibraryService ls){
 			ConsoleStars.consoleText("Library", 50);
 			ConsoleStars.consoleText("*", 50);
 			
@@ -172,6 +177,7 @@ public static void findBook(LibraryService ls){
 				break;
 			case "4":
 				ConsoleStars.consoleText("Return", 50);
+//				consoleStart(ls);
 				break;
 					
 			default:break;
@@ -179,7 +185,7 @@ public static void findBook(LibraryService ls){
 		
 	}
 
-	public static void selectBook(Book book){
+	public void selectBook(Book book){
 		ConsoleStars.consoleText(book.toString(), 50);
 		ConsoleStars.consoleText("*", 50);
 		
@@ -202,10 +208,9 @@ public static void findBook(LibraryService ls){
 			System.out.println("Enter comment: ");
 			String commentText = Rdr.readStr();
 			System.out.print("Enter rate: ");
-			int rate = Rdr.readInt();
-			
-			Comment comment = new Comment(rate, commentText, user);
-			ls.addComment(user, book, comment);
+			double rate = Rdr.readDbl();
+
+			ls.addComment(user, book, commentText, rate);
 			break;
 		case "4":
 			ConsoleStars.consoleText("Return", 50);
@@ -216,7 +221,7 @@ public static void findBook(LibraryService ls){
 	}
 	
 	
-	public static void profile(LibraryService ls){
+	public void profile(LibraryService ls){
 		ConsoleStars.consoleText("Library", 50);
 		ConsoleStars.consoleText("*", 50);
 		

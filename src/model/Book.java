@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class Book {
+	private int id;
 	private String title;
 	private String author;
 	private int year;
@@ -19,6 +20,25 @@ public class Book {
 	}
 
 	
+	
+	
+	
+	public int getId() {
+		return id;
+	}
+
+
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
+
+
 	public String getTitle() {
 		return title;
 	}
