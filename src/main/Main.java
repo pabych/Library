@@ -42,13 +42,14 @@ public class Main {
 		parser.parse(new File("user.xml"), saxp);
 		
 		
+		
 		LibraryService ls = saxp.getLs();
 		
 		ConsoleInterface ci = new ConsoleInterface();
 		ci.consoleStart(ls);
 		
 		XmlGen asd = new XmlGen();
-		asd.createUserXml(ls);
+		asd.createBookXml(ls);
 		
 		
 		

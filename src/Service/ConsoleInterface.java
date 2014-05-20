@@ -224,7 +224,7 @@ public void findBook(LibraryService ls){
 			System.out.print("Enter rate: ");
 			double rate = Rdr.readDbl();
 			ls.addComment(user, book, commentText, rate);
-			asd.createUserXml(ls);
+			asd.createBookXml(ls);
 			break;
 		case "4":
 			ConsoleStars.consoleText("Return", 50);

@@ -39,7 +39,6 @@ public class SAXPars extends DefaultHandler{
 		  user.setMail(atts.getValue("email"));
 		  user.setId(Integer.parseInt(atts.getValue("id")));
 		  ls.getXdb().addUser(user);
-		  
 	  }
 	  
 	  
@@ -56,7 +55,6 @@ public class SAXPars extends DefaultHandler{
 	  if(thisElement == "genre"){
 		  ArrayList<String> genres = book.getGenre();
 		  genres.add(atts.getValue("genre"));
-		  
 	  }
 	  
 	  if(thisElement == "rate"){
