@@ -1,6 +1,8 @@
 package Service;
 
 
+import java.util.Calendar;
+
 import model.Book;
 import model.Bookmark;
 import model.Comment;
@@ -61,15 +63,18 @@ public class FakeLibraryService implements LibraryService {
 		this.fdb = fdb;
 	}
 	@Override
+	public void addToOrders(User user, Book book, Calendar startDate, Calendar endDate) {
+		// TODO Auto-generated method stub
+		Order thisOrder = new Order(book);
+		thisOrder.setStartDate(startDate);
+		thisOrder.setEndDate(endDate);
+		user.getOrders().add(thisOrder);
+	}
+	@Override
 	public void addToOrders(User user, Book book) {
 		// TODO Auto-generated method stub
-		
 		Order thisOrder = new Order(book);
-		user.getOrders().add(thisOrder); 
-		
-		
-//		System.out.println("Adding to Orders - " + book.toString() + " - succes!");
-		
+		user.getOrders().add(thisOrder);
 	}
 	@Override
 	public void addToBookmarks(User user, Book book) {

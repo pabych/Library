@@ -1,5 +1,11 @@
 package Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
+
 import model.Book;
 import model.User;
 
@@ -43,17 +49,44 @@ public class SAXPars extends DefaultHandler{
 		  book.setFilename(atts.getValue("filename"));
 		  book.setId(Integer.parseInt(atts.getValue("id")));
 		  book.setYear(Integer.parseInt(atts.getValue("year")));
+		  book.setCount(Integer.parseInt(atts.getValue("count")));
 		  ls.getXdb().addBook(book);  
 	  }
 	  
+	  if(thisElement == "genre"){
+		  ArrayList<String> genres = book.getGenre();
+		  genres.add(atts.getValue("genre"));
+		  
+	  }
+	  
 	  if(thisElement == "rate"){
-		  user = ls.findUserById(Integer.parseInt(atts.getValue("user")));
+		  user = ls.findUserById(Integer.parseInt(atts.getValue("userid")));
 		  ls.addComment(user, book, atts.getValue("comment"), Double.parseDouble(atts.getValue("rate")));
 	  }
 	  
 	  if(thisElement == "order"){
 		  book = ls.findBookById(Integer.parseInt(atts.getValue("bookid")));
-		  ls.addToOrders(user, book);
+		  
+		  
+		  Calendar date = Calendar.getInstance();
+		  Calendar dateTo = Calendar.getInstance();
+		  SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d HH:mm:ss zzzz yyyy", Locale.ENGLISH);
+		  
+		  try {
+			  date.setTime(sdf.parse(atts.getValue("startdate")));
+			  dateTo.setTime(sdf.parse(atts.getValue("enddate")));
+		  } catch (ParseException e) {
+			  // TODO Auto-generated catch block
+			  e.printStackTrace();
+		  }
+		  ls.addToOrders(user, book, date, dateTo);
+		  
+		  
+		  
+//		  Calendar date = Calendar.getInstance();
+//			SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM d HH:mm:ss zzzz yyyy", Locale.ENGLISH);
+//			date.setTime(sdf.parse("Mon Mar 14 16:02:37 GMT 2011"));
+//			System.out.println(date.getTime());
 	  }
 	  
 	  if(thisElement == "bookmark"){

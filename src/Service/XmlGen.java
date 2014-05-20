@@ -4,6 +4,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 
+import java.util.ArrayList;
+
+import model.Bookmark;
+import model.Order;
 import model.User;
 
 import org.jdom2.*;
@@ -24,7 +28,7 @@ public class XmlGen {
 		     
 		   Document document = new Document(users);  
 		   
-		   for (User userok : ls.getFdb().getUsers()) {
+		   for (User userok : ls.getXdb().getUsers()) {
 			   Element user = new Element("user");  
 			  
 			  
@@ -36,11 +40,24 @@ public class XmlGen {
 			   
 			   
 			   Element orders = new Element("orders");
-			   orders.addContent(new Element("order").setText("1"));
+			   for(Order orderok : userok.getOrders()){
+				   
+//				   orders.addContent(new Element("order").setAttribute(new Attribute("bookid",  bookid+"" )));
+				   int bookid = orderok.getBook().getId();
+				   
+				   Element order = new Element("order");
+				   orders.addContent(order);
+				   order.setAttribute(new Attribute("bookid",  bookid+"" ));
+				   order.setAttribute(new Attribute("startdate",  orderok.getStartDate().getTime().toString() ));
+				   order.setAttribute(new Attribute("enddate",  orderok.getEndDate().getTime().toString() ));
+			   }
 			   user.addContent(orders);
 			   
 			   Element bookmarks= new Element("bookmarks");
-			   bookmarks.addContent(new Element("bookmark").setText("2"));
+			   
+			   for(Bookmark bookmarkok : userok.getBookmark()){
+				   bookmarks.addContent(new Element("bookmark").setAttribute(new Attribute("bookid", bookmarkok.getBook().getId()+""  )));
+			   }
 			   user.addContent(bookmarks);
 			   
 			   users.addContent(user);
@@ -51,12 +68,12 @@ public class XmlGen {
 		     
 		   XMLOutputter xmlOutput = new XMLOutputter();  
 		    
-		   xmlOutput.output(document, System.out);  
+//		   xmlOutput.output(document, System.out);  
 		  
 		    
 		   xmlOutput.setFormat(Format.getPrettyFormat());  
 		   xmlOutput.output(document, new FileWriter(  
-		     "testUser.xml"));  
+		     "User.xml"));  
 		  
 		  } catch (IOException io) {  
 		   System.out.println(io.getMessage());  

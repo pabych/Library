@@ -4,10 +4,16 @@ import java.io.File;
 import java.io.IOException;
 
 
+import java.text.ParseException;
+
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
  
+
+
+
+
 
 
 import org.xml.sax.*; 
@@ -19,14 +25,15 @@ import Service.XmlGen;
 
 public class Main {
 	
-	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
+	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, ParseException {
 		// TODO Auto-generated method stub
 		
 		
 		
-//		Calendar date = Calendar.getInstance();
-//		String asd = "Mon May 19 21:12:20 AST 2014";
-//		date.set(year, month, date, hourOfDay, minute);
+		
+		
+		
+		
 		SAXParserFactory factory = SAXParserFactory.newInstance(); 
 		SAXParser parser = factory.newSAXParser();
 		SAXPars saxp = new SAXPars(); 

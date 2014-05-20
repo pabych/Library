@@ -1,5 +1,7 @@
 package Service;
 
+import java.util.Calendar;
+
 import model.Book;
 import model.FakeDataBase;
 import model.User;
@@ -15,6 +17,7 @@ public interface LibraryService {
 	public Book findBookById(int id);
 	public FakeDataBase getFdb();
 	public XmlDataBase getXdb();
+	public void addToOrders(User user, Book book, Calendar startDate, Calendar endDate);
 	public void addToOrders(User user, Book book);
 	public void addToBookmarks(User user, Book book);
 }

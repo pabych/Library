@@ -2,18 +2,18 @@
 <Books>
 <book id="1" title="Matan" author="Martynov" filename="" year="2010" count="2">
 <genres>
-<genre>matemaika</genre>
+<genre genre="matematika"/>
 </genres>
 <rates>
-<rate rate="4.7" comment="xoroshaia kniga" user="1" ></rate>
+<rate rate="4.7" comment="xoroshaia kniga" userid="1" />
 </rates>
 </book>
 <book id="2" title="Algebra" author="Kapylova" filename="" year="2009" count="2">
 <genres>
-<genre>matemaika</genre>
+<genre genre="matematika"/>
 </genres>
 <rates>
-<rate rate="3.0" comment="kniga soset" user="2" ></rate>
+<rate rate="3.0" comment="kniga soset" userid="2" />
 </rates>
 </book>
 </Books>

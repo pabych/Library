@@ -9,8 +9,9 @@ public class Book {
 	private int year;
 	private String filename;
 	private ArrayList <Comment> rating = new ArrayList<Comment>();
-	private ArrayList<String> genre;
+	private ArrayList<String> genre = new ArrayList<>();
 	private String description;
+	private int count;
 	
 	
 	
@@ -23,6 +24,22 @@ public class Book {
 	
 	
 	
+	public int getCount() {
+		return count;
+	}
+
+
+
+
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+
+
+
+
 	public int getId() {
 		return id;
 	}
@@ -112,7 +129,7 @@ public class Book {
 	@Override
     public String toString()
     {
-        return this.title+" - "+this.author;
+        return this.title+" - "+this.author + " " + this.genre;
     }
 
 

@@ -1,5 +1,7 @@
 package Service;
 
+import java.util.Calendar;
+
 import model.Book;
 import model.Bookmark;
 import model.Comment;
@@ -58,16 +60,7 @@ public class XmlLibraryService implements LibraryService {
 	public void setXdb(XmlDataBase xdb) {
 		this.xdb = xdb;
 	}
-	@Override
-	public void addToOrders(User user, Book book) {
-		// TODO Auto-generated method stub
-		Order thisOrder = new Order(book);
-		user.getOrders().add(thisOrder); 
-		
-		
-//		System.out.println("Adding to Orders - " + book.toString() + " - succes!");
-		
-	}
+	
 	@Override
 	public void addToBookmarks(User user, Book book) {
 		// TODO Auto-generated method stub
@@ -102,6 +95,20 @@ public class XmlLibraryService implements LibraryService {
 	public FakeDataBase getFdb() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	@Override
+	public void addToOrders(User user, Book book, Calendar startDate, Calendar endDate) {
+		// TODO Auto-generated method stub
+		Order thisOrder = new Order(book);
+		thisOrder.setStartDate(startDate);
+		thisOrder.setEndDate(endDate);
+		user.getOrders().add(thisOrder);
+	}
+	@Override
+	public void addToOrders(User user, Book book) {
+		// TODO Auto-generated method stub
+		Order thisOrder = new Order(book);
+		user.getOrders().add(thisOrder);
 	}
 	
 

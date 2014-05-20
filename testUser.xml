@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <users>
-  <user id="1" name="Andrey" lastname="Lisovskiy" nickname="Lis" email="lisovskiy@mail.ru">
+  <user id="1" name="Andrei" lastname="Lisouski" nickname="pabych" email="pabych93@gmail.com">
     <orders>
-      <order>1</order>
+      <order bookid="1" startdate="Mon May 19 21:12:20 GMT+02:00 2014" enddate="Mon Jun 02 21:12:20 GMT+02:00 2014" />
     </orders>
     <bookmarks>
-      <bookmark>2</bookmark>
+      <bookmark bookid="1" />
     </bookmarks>
   </user>
-  <user id="2" name="Oleg" lastname="Shmyger" nickname="Olega" email="shmyger@mail.ru">
+  <user id="2" name="Timur" lastname="Abdulaev" nickname="timba" email="">
     <orders>
-      <order>1</order>
+      <order bookid="1" startdate="Tue May 20 01:58:49 GMT+02:00 2014" enddate="Tue Jun 03 01:58:49 GMT+02:00 2014" />
     </orders>
     <bookmarks>
-      <bookmark>2</bookmark>
+      <bookmark bookid="2" />
     </bookmarks>
+  </user>
+  <user id="3" name="Jenia" lastname="Xoruzhij" nickname="" email="xoruzhij">
+    <orders />
+    <bookmarks />
   </user>
 </users>

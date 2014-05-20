@@ -3,12 +3,16 @@ package Service;
 import java.util.ArrayList;
 
 
+
+
 import model.Book;
 import model.User;
 
 
 
 public class ConsoleInterface {
+	XmlGen asd = new XmlGen();
+	
 	
 	private User user;
 	public void consoleStart(LibraryService ls){
@@ -75,6 +79,7 @@ public class ConsoleInterface {
 		System.out.println("1. Find book");
 		System.out.println("2. Profile");
 		System.out.println("3. Logout");
+		System.out.println("4. Exit");
 		
 		a=Rdr.readStr();
 		switch(a){
@@ -90,7 +95,9 @@ public class ConsoleInterface {
 			ConsoleStars.consoleText("Logout", 50);
 			user = null;
 			break;
-				
+		case "4":
+			ConsoleStars.consoleText("Googbye", 50);
+			System.exit(0);	
 		default:break;
 		}
 		
@@ -106,7 +113,11 @@ public class ConsoleInterface {
 		System.out.println("Enter your nickname: ");
 		String nickname = Rdr.readStr();
 		User user = new User(name, lastname, nickname);
+		System.out.println("Enter your email: ");
+		String mail = Rdr.readStr();
+		user.setMail(mail);
 		ls.addUser(user);
+		asd.createUserXml(ls);
 	    
 	}
 	
@@ -128,7 +139,6 @@ public void findBook(LibraryService ls){
 				ArrayList<Book> resultAuthor = Search.searchByAuthor(bookAuthor, ls);
 				System.out.println(resultAuthor.toString());
 				for( int i=0;i<resultAuthor.size();i++ ){
-					
 					Book asd;
 					asd = resultAuthor.get(i);
 					System.out.println(i+1 + ". " + asd.toString());
@@ -136,7 +146,7 @@ public void findBook(LibraryService ls){
 				System.out.println("0. return");
 				int j = Rdr.readInt();
 				if(j==0) break;
-				else selectBook(resultAuthor.get(j-1));
+				else selectBook(resultAuthor.get(j-1), ls);
 			    
 				break;
 			case "2":
@@ -155,7 +165,7 @@ public void findBook(LibraryService ls){
 				j = Rdr.readInt();
 				if(j==0) break;
 				else {
-					selectBook(resultTitle.get(j-1));
+					selectBook(resultTitle.get(j-1), ls);
 				}
 				break;
 			case "3":
@@ -173,7 +183,7 @@ public void findBook(LibraryService ls){
 				System.out.println("0. return");
 				j = Rdr.readInt();
 				if(j==0) break;
-				else selectBook(resultRate.get(j-1));
+				else selectBook(resultRate.get(j-1), ls);
 				break;
 			case "4":
 				ConsoleStars.consoleText("Return", 50);
@@ -185,36 +195,41 @@ public void findBook(LibraryService ls){
 		
 	}
 
-	public void selectBook(Book book){
+	public void selectBook(Book book, LibraryService ls){
 		ConsoleStars.consoleText(book.toString(), 50);
 		ConsoleStars.consoleText("*", 50);
 		
-		FakeLibraryService ls = new FakeLibraryService();
+		
 		String a;
 		System.out.println("1. Order");
 		System.out.println("2. Add to bookmarks");
 		System.out.println("3. Comment");
 		System.out.println("4. Return");
 		
+		
+		
 		a=Rdr.readStr();
 		switch(a){
 		case "1":
-			ls.addToOrders(user, book);						
+			ls.addToOrders(user, book);
+			asd.createUserXml(ls);
 			break;
 		case "2":
 			ls.addToBookmarks(user, book);
+			asd.createUserXml(ls);
 			break;
 		case "3":
 			System.out.println("Enter comment: ");
 			String commentText = Rdr.readStr();
 			System.out.print("Enter rate: ");
 			double rate = Rdr.readDbl();
-
 			ls.addComment(user, book, commentText, rate);
+			asd.createUserXml(ls);
 			break;
 		case "4":
 			ConsoleStars.consoleText("Return", 50);
 			break;
+		
 				
 		default:break;
 		}
